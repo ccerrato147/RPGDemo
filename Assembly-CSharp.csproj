@@ -98,9 +98,9 @@
      <Compile Include="Assets\Environment\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\CharacterAnimator.cs" />
+     <Compile Include="Assets\Scripts\Conversation\ConversationDialog.cs" />
      <Compile Include="Assets\Scripts\Conversation\ConversationService.cs" />
      <Compile Include="Assets\Scripts\Conversation\ConversationUI.cs" />
-     <Compile Include="Assets\Scripts\Conversation\Dialog.cs" />
      <Compile Include="Assets\Scripts\EquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Helper\ConvertToRegularMesh.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
@@ -423,6 +423,9 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="websocket-sharp">
+ <HintPath>/Users/demoroom/Projects/RPG Integration 02/Assets/Watson/Plugins/websocket-sharp.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/Users/demoroom/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -443,9 +446,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/demoroom/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="websocket-sharp">
- <HintPath>/Users/demoroom/Projects/RPG Integration 02/Assets/Watson/Plugins/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
