@@ -1,21 +1,4 @@
-﻿/**
-* Copyright 2015 IBM Corp. All Rights Reserved.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-*/
-
-using UnityEngine;
+﻿using UnityEngine;
 using IBM.Watson.DeveloperCloud.Services.Conversation.v1;
 using IBM.Watson.DeveloperCloud.Utilities;
 using IBM.Watson.DeveloperCloud.Logging;
@@ -30,6 +13,9 @@ public class ConversationDialog : MonoBehaviour
 {
 	// Configurable Text
 	public Text Response;
+	public SpeechService speech;
+
+	// Private variables for internal use only
 	private string _username = "6d576a6c-32e7-4fe4-940b-86a615e845ad";
 	private string _password = "aycR4WiIaVu6";
 	private string _url = "https://gateway.watsonplatform.net/conversation/api";
@@ -41,10 +27,6 @@ public class ConversationDialog : MonoBehaviour
 	private fsSerializer _serializer = new fsSerializer();
 	private Dictionary<string, object> _context = null;
 
-	bool updateText = false;
-
-//	Timer timer;
-
 	void Start()
 	{
 		LogSystem.InstallDefaultReactors();
@@ -54,24 +36,9 @@ public class ConversationDialog : MonoBehaviour
 
 		_conversation = new Conversation(credentials);
 		_conversation.VersionDate = _conversationVersionDate;
-
-//		timer = new Timer ();
-//		timer.Interval = 500;
-//		timer.Elapsed += (sender, e) => {
-//			timer.Stop();
-//			Debug.Log ("Enter ELAPSED");
-//			SetUserText();
-//		};
 	}
 
-//	void Update(){
-//		if (updateText) {
-//			updateText = false;
-//			Response.text = currentText;
-//		}
-//	}
-
-	public void SendMessage(string text)
+	public void SendDialogMessage(string text)
 	{
 		MessageRequest messageRequest = new MessageRequest()
 		{
@@ -117,15 +84,8 @@ public class ConversationDialog : MonoBehaviour
 
 		if (resp != null && (messageResponse.intents.Length > 0 || messageResponse.intents.Length > 0)) {
 			Response.text = string.Join(", ", messageResponse.output.text);
-//			currentText = string.Join(", ", messageResponse.output.text);
-//			timer.Stop ();
-//			timer.Start ();
+			speech.SpeakText (Response.text);
 		}
-	}
-
-	private void SetUserText(){
-		Debug.Log ("Enter setUSERTEXT");
-		updateText = true;
 	}
 
 	private void OnFail(RESTConnector.Error error, Dictionary<string, object> customData)

@@ -101,6 +101,7 @@
      <Compile Include="Assets\Scripts\Conversation\ConversationDialog.cs" />
      <Compile Include="Assets\Scripts\Conversation\ConversationService.cs" />
      <Compile Include="Assets\Scripts\Conversation\ConversationUI.cs" />
+     <Compile Include="Assets\Scripts\Conversation\SpeechService.cs" />
      <Compile Include="Assets\Scripts\EquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Helper\ConvertToRegularMesh.cs" />
      <Compile Include="Assets\Scripts\Interactable.cs" />
