@@ -200,11 +200,6 @@ public class ConversationService : MonoBehaviour
 					ResultsField.text = currentText;
 					timer.Stop ();
 					timer.Start ();
-//					dialogService.SendMessage(currentText);
-//					if (!messageSent) {
-//						messageSent = true;
-//						timer.Start ();
-//					}
 				}
 
 				if (res.keywords_result != null && res.keywords_result.keyword != null)

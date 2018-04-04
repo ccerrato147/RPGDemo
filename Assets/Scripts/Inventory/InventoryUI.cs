@@ -46,4 +46,11 @@ public class InventoryUI : MonoBehaviour {
 			}
 		}
 	}
+
+	public void UseAllItem(){
+		for (int i = slots.Length -1; i >= 0; i--)
+		{
+			slots [i].UseItem ();
+		}
+	}
 }

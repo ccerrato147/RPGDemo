@@ -14,6 +14,8 @@ public class ConversationDialog : MonoBehaviour
 	// Configurable Text
 	public Text Response;
 	public SpeechService speech;
+	public GameObject inventoryUI;
+	public InventoryUI inventoryController;
 
 	// Private variables for internal use only
 	private string _username = "6d576a6c-32e7-4fe4-940b-86a615e845ad";
@@ -84,7 +86,25 @@ public class ConversationDialog : MonoBehaviour
 
 		if (resp != null && (messageResponse.intents.Length > 0 || messageResponse.intents.Length > 0)) {
 			Response.text = string.Join(", ", messageResponse.output.text);
+			HandleIntents (messageResponse.intents [0]);
 			speech.SpeakText (Response.text);
+		}
+	}
+
+	private void HandleIntents(RuntimeIntent intent){
+		Debug.Log ("INTENT: " + intent.intent);
+		switch (intent.intent) {
+			case "open_inventory":
+				inventoryUI.SetActive (true);
+				break;
+			case "close_inventory":
+				inventoryUI.SetActive (false);
+				break;
+			case "use_armor":
+				inventoryController.UseAllItem ();
+				break;
+			default:
+				break;
 		}
 	}
 
